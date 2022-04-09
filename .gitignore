@@ -104,7 +104,8 @@ celerybeat.pid
 # Environments
 .env
 .venv
-BackEnd/docker/database.env
+backend/docker/database.env
+dockertest
 env/
 venv/
 ENV/
