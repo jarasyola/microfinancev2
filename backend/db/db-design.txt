@@ -1,0 +1,80 @@
+=== Microfinance DB ===
+Tables:
+    1. debtor
+        -debtor_id : int(11): PK
+        -salutation: string(10)
+        -first_name: string(20)
+        -middle_name : string (20)
+        -last_name : string (20)
+        -mobile_number : string (20)
+        -physical_address : string (255)
+        -gender : string(10)
+        -national_id : string (30)
+        -email: string (20)
+        -debtor_moreinfo_id : int (10) RK to debtor_moreinfo table.
+
+
+    2. debtor_moreinfo
+        -debtor_moreinfo_id: int (11): PK
+        -passport_id : string (30)
+        -driving_licence_id: string (30)
+        -voters_id : string (30)
+        -ward : string (30)
+        -house_number: string(30)
+        -debtor_employer: string(30)
+        -spouse_name: string (30)
+        -spouse_contact: string (30)
+        -referee : string (30)
+
+    3. loan_trans
+        - transaction_id : int (11)
+        - debtor_id : int (11) reference key to debtor table.
+        - date: date
+        - purpose: string (255)
+        - collateral: string (255)
+
+    4. loan_info
+        -info_id : int (11)
+        -debtor_id : int (11) reference key to debtor table.
+        - loan_date: date
+        - loan_due: date
+        - payment_range: string (255)
+
+    5. loan_offers
+        - loan_id : int (11)
+        - loan_name : string (30)
+        - amount : int (255)
+        - loan_range : string (255)
+        - interest : float
+
+    6. payment_info
+       - payment_id : int (11)
+       - info_id : int (11) reference key to loan_info.
+       - pay_amount : int (255)
+       - payment_date: date
+       - debtor_id : int(11) reference key to debtor table.
+
+    7. accounts
+       - accounts_id: int(11)
+       - loans_returned: int (11)
+       - loans_issued: int (11)
+       - transaction_id: int (11) reference key to loan_trans.
+
+    8. setup
+       -setup_id : int (11)
+       -bank_details: string(255)
+       -debtor_locations: string(255)
+       -payment_frequency: string(255)
+       -loan_types: string (255)
+       -currency: string (255)
+       -interest: float - reference key to loan_offers (not sure as not primar)
+       -loan_id : int (11) reference key to loan_offers table.
+       -debtor_id: int (11) referencekey to debtor table.
+
+    9. reports
+       -report_id: int (11)
+       -debtor_id : int (11) reference for debtor table.
+       -loan_id : int (11)  reference key to loan_offers table.
+       -info_id : int (11)  reference key to loan_info table.
+       -payment_id : int (11) reference key to payment_info table.
+       -date : date
